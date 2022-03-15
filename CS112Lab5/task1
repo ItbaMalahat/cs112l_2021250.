@@ -1,0 +1,63 @@
+#include<iostream>
+using namespace std;
+
+class small_set
+{
+private:
+int item;
+	
+public:
+	int size;
+	new int arr [];
+	small_set() {
+		size = 1;
+		arr [size];
+	}
+	
+	
+int arr[];
+void set(int item)
+{
+	for (int i = 0; i< size; i++)
+	{
+		if (arr[i] == item)
+		{
+			cout << "element is set already\n";
+		}
+		else
+			if (arr[i] == 0)
+		{arr[i] = item;
+		}
+	}
+
+}
+void clear(int item) {
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i] == item)
+		{arr[i] == 0;
+		cout <<"element cleared" << endl;
+		size -= 1; }
+	}
+
+}
+
+int test(int num) {
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i] == item)
+		{cout << "element is set already\n"; }
+	}
+
+}
+};
+
+
+int main() { 
+	int size;
+	small_set first, second;
+	cout << "Enter the size of array";
+	cin >> size;
+	
+	
+	return 0; }
