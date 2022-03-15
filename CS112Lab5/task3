@@ -1,0 +1,308 @@
+#include<iostream>
+using namespace std;
+#include<string>
+
+class stringType
+{
+private:
+
+	string Str1, Str2;
+public:
+	stringType() {
+		Str1 = Str2 = "null";
+	}
+
+	void setValues(string str1, string str2)
+	{
+		Str1 = str1;
+		Str2 = str2;
+	}
+	void printValues() {
+		cout << "string 1: " << Str1 << endl;
+		cout << "string 2: " << Str2 << endl;
+	}
+
+	void copy(string source, string destination) {
+		if (source[0] != '\0')
+		{
+			int i = 0;
+			while (source[i] != '/0')
+			{
+				destination[i] = source[i];
+				i++;
+			}
+		}
+		else
+			cout << "source string is empty\n";
+	}
+	int searchWord(string word) {
+		int option;
+		do {
+			cout << "select string to search in ( 1 or 2) press 0 to exit\n";
+			cin >> option;
+			switch (option)
+			{
+			case 0:
+			{
+				cout << "successfully exited...\n"; 
+			}
+			break;
+			
+			case 1:
+			{
+				int samecounter = 0;
+				int wordlength = maxLength(word);
+				int stringlength = maxLength(Str1);
+				
+				if (wordlength > stringlength){
+			{
+					for (int i = 0; Str1[i] != 0; i++)
+					{
+						if (Str1[i] == word[i])
+						{
+							samecounter += 1;
+						}
+					}
+			}
+			if (samecounter <= stringlength)
+			{
+				cout << "word is larger than the string\n";
+				cout << "the string has the word till " << samecounter << "th digit " << endl;
+			}
+			}
+
+			else if (wordlength == stringlength)
+			{
+				for (int i = 0; Str1[i] != 0; i++)
+				{
+					if (Str1[i] == word[i])
+						samecounter += 1;
+				}
+
+				if (samecounter == stringlength)
+				{
+					cout << "the string is the same as the word\n";
+				}
+			}
+			
+			else if (wordlength > stringlength)
+			{
+				for (int i = 0; Str1[i] != 0; i++){
+					if (Str1[i] == word[i])
+					{
+						samecounter += 1;
+					}
+				}
+
+				if (samecounter == stringlength)
+					cout << "the string contains the word\n";
+			}
+	}
+
+					break;
+			case 2: {}
+					  break;
+				default:
+				{
+				cout << "invalid choice. Please choose from 0,1,2 only \n"; 
+				} 
+				}
+		} while (option != 0);
+	}
+	int maxLength(string str)
+	{
+		int len = 0;
+		for (int i = 0; str[i] != '\0'; i++)
+		{
+			len += 1;
+		}
+
+		return len;
+	}
+
+	string conCatenate(string s1, string s2) {
+		string string1;
+		string string2;
+		string1 = s1;
+		string2 = s2;
+		int len1, len2;
+		len1 = maxLength(string1);
+		len2 = maxLength(string2);
+		for (int i = len1; string2[i] != '\0'; i++)
+		{
+			string1 += string2[i];
+		}
+
+		return string1;
+	}
+	int searchChar(char ch)
+	{
+		int stringselect;
+		do {
+			
+			cout << "search string 1 or 2? (press 0 to exit)\n";
+			cin >> stringselect;
+			switch (stringselect) {
+			case 0:
+				cout << "exit successful\n";
+				break;
+			case 1:
+			{
+				for (int i = 0; Str1[i] != 0; i++)
+			{
+					if (Str1[i] == ch)
+						cout << "character found in string 1" << endl;
+					else
+						cout << "character not found\n";
+			}
+			}
+			break;
+			case 2:
+			{
+				for (int i = 0; Str2[i] != 0; i++)
+				{
+					if (Str2[i] == ch)
+					{
+						cout << "character found in string 2" << endl;
+					}
+					else
+					{
+						cout << "character not found\n";
+					}
+				}
+			}
+
+				break;
+			default:
+				cout << "invalid choice\n";
+			}
+
+		} while (stringselect != 0);
+	};
+	void copystring(string source, string destination)
+	{
+		int sourcelen = maxLength(source);
+		int deslen = maxLength(destination);
+		if (sourcelen > deslen)
+		{
+			for (int i = 0; i < deslen; i++) 
+			{
+				destination[i] = source[i];
+			}
+			cout << "as length of source is larger than length of destination, full string could not be copied\n ";
+		}
+		if (sourcelen <= deslen)
+		{
+			for (int i = 0; i < deslen; i++)
+			{
+				destination[i] = source[i];
+			}
+			cout << "string copied\n ";
+
+		}
+	}
+	};
+
+
+		
+
+	
+
+
+	int main()
+	{
+		string string1, string2;
+		stringType s1;
+		int choice;
+		do{cout << "\npress 0 to exit\npress 1 to set values of strings\npress 2 to print values\npress 3 to find max length\npress 4 to copy string\n";
+		cout << "press 5 to search word\npress 6 to concatenate strings\npress 7 to search for character\n";
+		cin >> choice;
+		switch (choice)
+		{
+		case 0:
+		{cout << "exit successful\n"; }
+		break;
+		case 1:
+		{ cout << "enter value of string 1(no spaces)\n";
+		cin >> string1;
+		cout << "enter value of string 2(no spaces)\n";
+		cin >> string2;
+		s1.setValues(string1, string2);
+		cout << "set value successful\n";
+		}
+		break;
+		case 2:
+		{
+			s1.printValues();
+		}
+		break;
+		case 3:
+		{
+				int select;
+				do
+				{
+					cout << "press 1 for length of string 1\npress 2 for length of string 2\npress 0 to exit";
+					cin >> select;
+					switch (select)
+				{
+					case 0:
+					{
+						cout << "exit successful\n";
+					}
+					break;
+					case 1:
+					{
+						cout << "length of string is " << s1.maxLength(string1);
+					}
+					break;
+					case 2:
+					{
+						cout << "length of string is " << s1.maxLength(string2);
+					}
+					break;
+					default:
+					{	cout << "invalid character (valid characters : 0,1,2)" << endl; }
+
+					}
+				
+				} while (select != 0);
+			
+		}
+		break;
+		case 4:
+		{
+		cout << "enter source string (no spaces)";
+		cin >> string1;
+		s1.copystring(string1,string2); 
+		}
+		break;
+		case 5:
+		{ 
+		string word;
+		cout << "enter word to be searched(no spaces accepted)\n";
+		cin >> word;
+		s1.searchWord(word);
+		}
+		break;
+		case 6:
+		{
+			cout<< "strings concatenated are"<< s1.conCatenate(string1, string2);
+
+		}
+		break;
+		case 7:
+		{
+		char ch;
+		int select;
+		cout << "enter character to be searched\n";
+		s1.searchChar(ch);
+		}
+		break;
+		default:
+		{
+			cout << "invalid character\n";
+		}
+		}
+		} while (choice != 0);
+	return 0;
+}
