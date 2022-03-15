@@ -1,0 +1,86 @@
+#include<iostream>
+using namespace std; 
+
+class Parity {
+private:
+	int put;
+	int* ptr = new int[put];
+public:
+	Parity() 
+	{ 
+		put = 0;
+	}
+	void addput(int num) {
+		ptr[put] = num;
+		put += 1;
+	}
+	void view()
+	{ 
+		for (int i = 0; i < put; i++)
+	{
+			cout << " number " << i << ": " << ptr[i] << " " << endl;;
+		}
+	}
+	void delput()
+	{
+		if (put > 0)
+		{
+			put -= 1;
+			cout << "last element deleted\n";
+		}
+		else
+			cout << "no element in the array\n";
+	}
+	
+	int test(int put) {
+		if (put % 2 == 0)
+			return true;
+		else 
+			return false;
+	}
+
+};
+
+int main() {
+	Parity p1;
+	int putcounter = 0;
+	int choice;
+	do {
+		cout << "press 0 to exit\npress 1 to put\npress 2 to view\npress 3 to delete\npress 4 to test" << endl;
+		cin >> choice;
+		switch (choice)
+		{
+		case 0:
+			"menu has exited\n";
+			break;
+		case 1:
+			int num;
+			cout << "enter a number to be put\n";
+			cin >> num;
+			p1.addput(num);
+			cout << "number added\n";
+			putcounter += 1;
+			break;
+		case 2:
+			p1.view();
+			break;
+		case 3:
+			p1.delput();
+			break;
+		case 4:
+			if (p1.test(putcounter) == 1)
+			{
+				cout << "the number of puts is even.";
+				cout << endl;
+			}
+			else
+			{
+				cout << "the number of puts is odd\n";
+			}
+			break;
+		default:
+			cout << "invalid choice\n";
+		}
+	}
+	while (choice != 0);
+}
