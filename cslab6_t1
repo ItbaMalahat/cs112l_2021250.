@@ -1,0 +1,52 @@
+#include <iostream>
+#include<string>
+using namespace std;
+
+
+class person {
+private:
+    string name;
+    string university;
+    //  static int unicount;
+
+public:
+    friend class Coordinator;
+};
+
+
+class Coordinator {
+private:
+    int roomnum = 0;
+public:
+    person p1, p2;
+    Coordinator() {
+        cout << "enter competition name for first person\n";
+        cin >> p1.name;
+        cout << "enter competition name for second person\n";
+        cin >> p2.name;
+        cout << "enter university name for first person\n";
+        cin >> p1.university;
+
+
+        cout << "enter university name for second person\n";
+        cin >> p2.university;
+
+        if (p1.university == p2.university)
+        {
+            cout << "room number " << roomnum << " is alloted to both persons\n";
+        }
+        else
+        {
+            cout << "room number " << roomnum << " will is alloted to person 1 and " << roomnum + 1 << " is alloted to second person\n";
+        }
+    }
+
+};
+
+
+int main()
+{
+    Coordinator c1;
+
+}
+
