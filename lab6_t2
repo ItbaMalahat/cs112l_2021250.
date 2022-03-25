@@ -1,0 +1,99 @@
+#include<iostream>
+using namespace std;
+#include<string>
+
+class officer {
+private:
+	static int entrycounter;
+	int id;
+	string name;
+	string rank;
+	int len;
+
+public:
+	void getter() {
+		cout << "enter length of id (must be greater than 1 and no negative numbers)\n";
+		cin >> len;
+		if (len < 2)
+		{
+			cout << "invalid length" << endl;
+		}
+		else
+		{
+			cout << "enter id" << endl;
+			for (int i = 0; i < len; i++)
+			{
+				cin >> id;
+			}
+		}
+	}
+	void officerdetails() {
+		cout << "enter the name of the officer\n";
+		cin >> name;
+		cout << "enter the rank of the officer\n";
+		cin >> rank;
+
+
+
+	}
+	void palindromtest()
+	{
+		int approvecounter = 0;
+		if (len > 1)
+		{
+			for (int i = 0; i < len; i++)
+			{
+				if (id % 10 != id / 10)
+				{
+					cout << "the officer is allowed to the restricted area\n";
+					approvecounter += 1;
+					break;
+
+				}
+
+			}
+			if (approvecounter == 0)
+			{
+				cout << "entry not approved\n";
+			}
+		}
+	}
+	void getentrycount()
+	{
+		cout << "the number of officers that have entered are " << entrycounter << endl;
+	}
+};
+int officer::entrycounter;
+int main()
+{
+	officer o1;
+	int choice;
+	do {
+		cout << "please select the desired option\n";
+		cout << "1. Enter id of officer\n2. Get total number of officers\n3. Exit\n";
+		cin >> choice;
+		switch (choice) {
+		case 1: {
+			o1.getter();
+			o1.palindromtest();
+
+		}
+			  break;
+		case 2:
+		{
+			o1.getentrycount();
+		}
+		break;
+		case 3:
+		{
+			cout << "menu successfully exit\n";
+		}
+		break;
+		default:
+		{
+			cout << "invalid choice\n";
+		}
+		}
+	} while (choice != 3);
+
+}
